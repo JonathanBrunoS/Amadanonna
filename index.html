@@ -39,7 +39,7 @@
            VARIÁVEIS DE CORES 
            ========================================= */
         :root {
-            /* Fundo escuro neutro e elegante para destacar as cores reais da logo */
+            /* Fundo escuro premium */
             --bg-color: #0a0a0a; 
             --text-light: #FFFFFF;
             
@@ -104,7 +104,7 @@
         .logo-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Nunca corta a logo */
+            object-fit: contain;
         }
 
         .header h1 {
@@ -124,6 +124,42 @@
         }
 
         /* =========================================
+           MAPA (LOCALIZAÇÃO)
+           ========================================= */
+        .map-section {
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background-color: #151515;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%); /* Efeito Dark Mode no Mapa */
+        }
+
+        /* =========================================
            CARDS DE PLATAFORMAS (LINKS)
            ========================================= */
         .links-section {
@@ -132,7 +168,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            margin-bottom: 45px; /* Espaço antes do carrossel */
+            margin-bottom: 45px;
         }
 
         .platform-card {
@@ -141,7 +177,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 90px;
+            height: 95px;
             border-radius: 16px;
             text-decoration: none;
             overflow: hidden;
@@ -152,41 +188,31 @@
             transition: transform 0.2s ease;
         }
 
-        /* Bordas laterais para identificação rápida */
-        .card-keeta { border-left: 5px solid var(--keeta-color); }
         .card-ifood { border-left: 5px solid var(--ifood-color); }
         .card-99food { border-left: 5px solid var(--food99-color); }
+        .card-keeta { border-left: 5px solid var(--keeta-color); }
 
         .platform-card:active {
             transform: scale(0.96);
         }
 
-        /* Imagem da Plataforma */
+        /* Imagem/Banner da Plataforma dentro do card */
         .platform-logo-box {
             display: flex;
             align-items: center;
             z-index: 2;
+            height: 100%;
+            padding: 10px 0;
         }
 
         .platform-logo-box img {
-            height: 32px;
+            height: auto;
+            max-height: 45px;
             width: auto;
-            max-width: 110px;
+            max-width: 150px;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
-
-        /* Textos substitutos (Fallbacks) */
-        .platform-name-fallback {
-            font-size: 1.3rem;
-            font-weight: 900;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            letter-spacing: -0.5px;
-        }
-
-        .text-keeta { color: var(--keeta-color); }
-        .text-ifood { color: var(--ifood-color); }
-        .text-99food { color: var(--food99-color); }
 
         /* Botão "Pedir Agora" pulsante */
         .cta-btn {
@@ -200,11 +226,12 @@
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             animation: pulse-btn 2s infinite;
+            white-space: nowrap;
         }
 
-        .btn-keeta { background-color: var(--keeta-color); color: #000; }
         .btn-ifood { background-color: var(--ifood-color); }
         .btn-99food { background-color: var(--food99-color); color: #000; }
+        .btn-keeta { background-color: var(--keeta-color); color: #000; }
 
         @keyframes pulse-btn {
             0% { transform: scale(1); }
@@ -217,7 +244,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Gradiente escuro sobre a imagem de fundo do card */
+        /* Overlay escuro sobre o fundo do card para leitura */
         .platform-card::before {
             content: '';
             position: absolute;
@@ -226,10 +253,10 @@
             z-index: 1;
         }
 
-        /* Imagens de fundo nos cards */
-        .card-keeta { background-image: url('https://i.ibb.co/RL9XCL8/Calabresa-1.png'); background-size: cover; background-position: center; }
+        /* Imagens de fundo sutis nos cards */
         .card-ifood { background-image: url('https://i.ibb.co/hRV7v0b9/Pizza-doce-limoneto-ifood.png'); background-size: cover; background-position: center; }
         .card-99food { background-image: url('https://i.ibb.co/PZTXzSkR/Atum-1.png'); background-size: cover; background-position: center; }
+        .card-keeta { background-image: url('https://i.ibb.co/RL9XCL8/Calabresa-1.png'); background-size: cover; background-position: center; }
 
         /* =========================================
            CARROSSEL INFINITO (NO FINAL)
@@ -240,20 +267,10 @@
             margin-top: 10px;
         }
 
-        .carousel-title {
-            font-size: 1rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
         .carousel-section {
             width: 100vw;
             overflow: hidden;
             position: relative;
-            /* Máscara para suavizar as bordas */
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
@@ -314,21 +331,27 @@
             <p>A Melhor Pizza da Região!! 🍕</p>
         </header>
 
-        <!-- LINKS DAS PLATAFORMAS (No Topo) -->
-        <section class="links-section">
-            
-            <!-- KEETA -->
-            <a href="https://www.keeta-global.com/BR/en" target="_blank" class="platform-card card-keeta" onclick="trackClick('clique_keeta')">
-                <div class="platform-logo-box">
-                    <h2 class="platform-name-fallback text-keeta">Keeta</h2>
-                </div>
-                <div class="cta-btn btn-keeta">Pedir Agora</div>
-            </a>
+        <!-- MAPA / LOCALIZAÇÃO -->
+        <section class="map-section">
+            <h3 class="section-title">Nossa Localização</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=R.%20Rio%20Verde,%202100%20-%20Vila%20Genioli%20/%20Pirituba,%20S%C3%A3o%20Paulo%20-%20SP,%2002934-400&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
 
+        <!-- LINKS DAS PLATAFORMAS -->
+        <section class="links-section">
+            <h3 class="section-title">Faça seu Pedido</h3>
+            
             <!-- IFOOD -->
             <a href="https://www.ifood.com.br/" target="_blank" class="platform-card card-ifood" onclick="trackClick('clique_ifood')">
                 <div class="platform-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Ifood_logo.svg" alt="iFood Logo">
+                    <img src="https://i.ibb.co/cSVj99qF/Keeta.webp" alt="iFood">
                 </div>
                 <div class="cta-btn btn-ifood">Pedir Agora</div>
             </a>
@@ -336,16 +359,24 @@
             <!-- 99FOOD -->
             <a href="https://99app.com/99food/" target="_blank" class="platform-card card-99food" onclick="trackClick('clique_99food')">
                 <div class="platform-logo-box">
-                    <h2 class="platform-name-fallback text-99food">99Food</h2>
+                    <img src="https://i.ibb.co/JWF27kg7/99food.png" alt="99Food">
                 </div>
                 <div class="cta-btn btn-99food">Pedir Agora</div>
             </a>
 
+            <!-- KEETA -->
+            <a href="https://www.keeta-global.com/BR/en" target="_blank" class="platform-card card-keeta" onclick="trackClick('clique_keeta')">
+                <div class="platform-logo-box">
+                    <img src="https://i.ibb.co/ksW0xqnh/download.png" alt="Keeta">
+                </div>
+                <div class="cta-btn btn-keeta">Pedir Agora</div>
+            </a>
+
         </section>
 
-        <!-- CARROSSEL DE PIZZAS (No Fundo) -->
+        <!-- CARROSSEL DE PIZZAS -->
         <div class="carousel-container">
-            <h3 class="carousel-title">Nosso Cardápio</h3>
+            <h3 class="section-title">Nosso Cardápio</h3>
             <section class="carousel-section">
                 <div class="carousel-track">
                     <!-- Imagens Originais -->
