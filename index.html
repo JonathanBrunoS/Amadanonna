@@ -68,7 +68,7 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         .main-container {
@@ -123,15 +123,6 @@
             font-style: italic;
         }
 
-        /* =========================================
-           MAPA (LOCALIZAÇÃO)
-           ========================================= */
-        .map-section {
-            width: 100%;
-            padding: 0 20px;
-            margin-bottom: 30px;
-        }
-
         .section-title {
             font-size: 0.9rem;
             color: #888;
@@ -140,23 +131,6 @@
             margin-bottom: 12px;
             font-weight: 600;
             text-align: center;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 180px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            background-color: #151515;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%); /* Efeito Dark Mode no Mapa */
         }
 
         /* =========================================
@@ -185,7 +159,7 @@
             background: #151515;
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card-ifood { border-left: 5px solid var(--ifood-color); }
@@ -194,6 +168,7 @@
 
         .platform-card:active {
             transform: scale(0.96);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
         /* Imagem/Banner da Plataforma dentro do card */
@@ -209,39 +184,9 @@
             height: auto;
             max-height: 45px;
             width: auto;
-            max-width: 150px;
+            max-width: 140px;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-
-        /* Botão "Pedir Agora" pulsante */
-        .cta-btn {
-            z-index: 2;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #FFF;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            animation: pulse-btn 2s infinite;
-            white-space: nowrap;
-        }
-
-        .btn-ifood { background-color: var(--ifood-color); }
-        .btn-99food { background-color: var(--food99-color); color: #000; }
-        .btn-keeta { background-color: var(--keeta-color); color: #000; }
-
-        @keyframes pulse-btn {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Overlay escuro sobre o fundo do card para leitura */
@@ -259,12 +204,80 @@
         .card-keeta { background-image: url('https://i.ibb.co/RL9XCL8/Calabresa-1.png'); background-size: cover; background-position: center; }
 
         /* =========================================
-           CARROSSEL INFINITO (NO FINAL)
+           BOTÕES CTA PREMIUM
+           ========================================= */
+        .cta-btn {
+            z-index: 2;
+            padding: 10px 22px;
+            border-radius: 30px; /* Estilo pílula moderno */
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3);
+            animation: pulse-btn 2.5s infinite;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Gradientes e contrastes refinados para cada plataforma */
+        .btn-ifood { 
+            background: linear-gradient(135deg, #EA1D2C 0%, #B81320 100%); 
+            color: #FFFFFF; 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        }
+        
+        .btn-99food { 
+            background: linear-gradient(135deg, #F6B32E 0%, #D9981D 100%); 
+            color: #111111; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6);
+        }
+        
+        .btn-keeta { 
+            background: linear-gradient(135deg, #FFB800 0%, #D49900 100%); 
+            color: #111111; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6);
+        }
+
+        /* Adicionando uma setinha usando pseudo-elemento para instigar o clique */
+        .cta-btn::after {
+            content: '›';
+            font-size: 1.2rem;
+            line-height: 0.5;
+            margin-bottom: 2px;
+            font-weight: 400;
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(234,29,44,0.3), inset 0 2px 5px rgba(255,255,255,0.5); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); }
+        }
+
+        .btn-99food { animation-name: pulse-btn-yellow; }
+        .btn-keeta { animation-name: pulse-btn-yellow; }
+
+        @keyframes pulse-btn-yellow {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(246,179,46,0.4), inset 0 2px 5px rgba(255,255,255,0.8); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           CARROSSEL INFINITO
            ========================================= */
         .carousel-container {
             width: 100%;
             text-align: center;
-            margin-top: 10px;
+            margin-bottom: 45px;
         }
 
         .carousel-section {
@@ -312,6 +325,32 @@
             100% { transform: translateX(calc(-220px * 4 - 15px * 4)); }
         }
 
+        /* =========================================
+           MAPA (LOCALIZAÇÃO) NO FINAL
+           ========================================= */
+        .map-section {
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 10px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background-color: #151515;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%);
+        }
+
     </style>
 </head>
 <body>
@@ -331,19 +370,6 @@
             <p>A Melhor Pizza da Região!! 🍕</p>
         </header>
 
-        <!-- MAPA / LOCALIZAÇÃO -->
-        <section class="map-section">
-            <h3 class="section-title">Nossa Localização</h3>
-            <div class="map-container">
-                <iframe 
-                    src="https://maps.google.com/maps?q=R.%20Rio%20Verde,%202100%20-%20Vila%20Genioli%20/%20Pirituba,%20S%C3%A3o%20Paulo%20-%20SP,%2002934-400&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </section>
-
         <!-- LINKS DAS PLATAFORMAS -->
         <section class="links-section">
             <h3 class="section-title">Faça seu Pedido</h3>
@@ -353,7 +379,7 @@
                 <div class="platform-logo-box">
                     <img src="https://i.ibb.co/cSVj99qF/Keeta.webp" alt="iFood">
                 </div>
-                <div class="cta-btn btn-ifood">Pedir Agora</div>
+                <div class="cta-btn btn-ifood">Pedir</div>
             </a>
 
             <!-- 99FOOD -->
@@ -361,7 +387,7 @@
                 <div class="platform-logo-box">
                     <img src="https://i.ibb.co/JWF27kg7/99food.png" alt="99Food">
                 </div>
-                <div class="cta-btn btn-99food">Pedir Agora</div>
+                <div class="cta-btn btn-99food">Pedir</div>
             </a>
 
             <!-- KEETA -->
@@ -369,9 +395,8 @@
                 <div class="platform-logo-box">
                     <img src="https://i.ibb.co/ksW0xqnh/download.png" alt="Keeta">
                 </div>
-                <div class="cta-btn btn-keeta">Pedir Agora</div>
+                <div class="cta-btn btn-keeta">Pedir</div>
             </a>
-
         </section>
 
         <!-- CARROSSEL DE PIZZAS -->
@@ -393,6 +418,20 @@
                 </div>
             </section>
         </div>
+
+        <!-- MAPA / LOCALIZAÇÃO (NO FINAL) -->
+        <section class="map-section">
+            <h3 class="section-title">Nossa Localização</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=R.%20Rio%20Verde,%202100%20-%20Vila%20Genioli%20/%20Pirituba,%20S%C3%A3o%20Paulo%20-%20SP,%2002934-400&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
     </div>
 
     <!-- SCRIPT DE RASTREAMENTO UNIFICADO -->
