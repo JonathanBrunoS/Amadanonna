@@ -36,14 +36,16 @@
 
     <style>
         /* =========================================
-           VARIÁVEIS DE CORES 
+           VARIÁVEIS DE CORES & PALETA EXTRAÍDA
            ========================================= */
         :root {
-            /* Fundo escuro premium */
-            --bg-color: #0a0a0a; 
+            /* Fundo Quente Premium (Tons escuros da logo/pizzaria) */
+            --bg-dark-1: #2B0A0A; /* Bordô muito escuro (topo) */
+            --bg-dark-2: #110505; /* Quase preto avermelhado (base) */
             --text-light: #FFFFFF;
             
             /* Cores das Plataformas */
+            --proprio-color: #00C853; /* Verde conversão para o Cardápio Próprio */
             --ifood-color: #EA1D2C;
             --food99-color: #F6B32E;
             --keeta-color: #FFB800;
@@ -61,7 +63,8 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            /* Aplicação do background alinhado com a paleta da pizzaria */
+            background: radial-gradient(circle at top, var(--bg-dark-1) 0%, var(--bg-dark-2) 100%);
             color: var(--text-light);
             min-height: 100vh;
             display: flex;
@@ -91,10 +94,10 @@
         }
 
         .logo-wrapper {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            border: 3px solid #333;
+            border: 4px solid var(--proprio-color); /* Borda verde conectando com o CTA principal */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             overflow: hidden;
             margin: 0 auto 15px auto;
@@ -108,24 +111,24 @@
         }
 
         .header h1 {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,1);
+            text-shadow: 0 3px 6px rgba(0,0,0,1);
         }
 
         .header p {
             font-size: 1.05rem;
-            color: #cccccc;
+            color: #E0D4D4; /* Branco com leve toque quente */
             font-weight: 500;
             font-style: italic;
         }
 
         .section-title {
             font-size: 0.9rem;
-            color: #888;
+            color: #A89595;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 12px;
@@ -156,10 +159,35 @@
             text-decoration: none;
             overflow: hidden;
             padding: 0 20px;
-            background: #151515;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #1A0D0D;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* CARD DESTAQUE: CARDÁPIO PRÓPRIO */
+        .highlight-card {
+            height: 120px; /* Maior que os outros */
+            border: 2px solid var(--proprio-color);
+            box-shadow: 0 8px 25px rgba(0, 200, 83, 0.25);
+            margin-bottom: 8px;
+        }
+
+        /* Etiqueta de Vantagem no Card Principal */
+        .ribbon {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            background-color: var(--proprio-color);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 0 0 8px 8px;
+            z-index: 3;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         .card-ifood { border-left: 5px solid var(--ifood-color); }
@@ -168,7 +196,6 @@
 
         .platform-card:active {
             transform: scale(0.96);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
         /* Imagem/Banner da Plataforma dentro do card */
@@ -189,16 +216,26 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
+        .platform-name-fallback {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: -0.5px;
+        }
+
+        .text-proprio { color: #FFFFFF; font-size: 1.6rem;}
+
         /* Overlay escuro sobre o fundo do card para leitura */
         .platform-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.6) 100%);
+            background: linear-gradient(90deg, rgba(15,5,5,0.95) 0%, rgba(15,5,5,0.5) 100%);
             z-index: 1;
         }
 
-        /* Imagens de fundo sutis nos cards */
+        /* Imagens de fundo temporárias (Proporção 1000x220px) */
+        .card-proprio { background-image: url('https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; }
         .card-ifood { background-image: url('https://i.ibb.co/hRV7v0b9/Pizza-doce-limoneto-ifood.png'); background-size: cover; background-position: center; }
         .card-99food { background-image: url('https://i.ibb.co/PZTXzSkR/Atum-1.png'); background-size: cover; background-position: center; }
         .card-keeta { background-image: url('https://i.ibb.co/RL9XCL8/Calabresa-1.png'); background-size: cover; background-position: center; }
@@ -209,7 +246,7 @@
         .cta-btn {
             z-index: 2;
             padding: 10px 22px;
-            border-radius: 30px; /* Estilo pílula moderno */
+            border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -217,32 +254,24 @@
             white-space: nowrap;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3);
-            animation: pulse-btn 2.5s infinite;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* Gradientes e contrastes refinados para cada plataforma */
-        .btn-ifood { 
-            background: linear-gradient(135deg, #EA1D2C 0%, #B81320 100%); 
-            color: #FFFFFF; 
-            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-        }
-        
-        .btn-99food { 
-            background: linear-gradient(135deg, #F6B32E 0%, #D9981D 100%); 
-            color: #111111; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6);
-        }
-        
-        .btn-keeta { 
-            background: linear-gradient(135deg, #FFB800 0%, #D49900 100%); 
-            color: #111111; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6);
+        .btn-proprio {
+            background: linear-gradient(135deg, #00E676 0%, #00C853 100%);
+            color: #000000;
+            font-size: 0.95rem;
+            padding: 12px 26px;
+            animation: pulse-btn-green 2s infinite;
+            box-shadow: 0 4px 15px rgba(0,200,83,0.4), inset 0 2px 5px rgba(255,255,255,0.6);
         }
 
-        /* Adicionando uma setinha usando pseudo-elemento para instigar o clique */
+        .btn-ifood { background: linear-gradient(135deg, #EA1D2C 0%, #B81320 100%); color: #FFFFFF; }
+        .btn-99food { background: linear-gradient(135deg, #F6B32E 0%, #D9981D 100%); color: #111111; }
+        .btn-keeta { background: linear-gradient(135deg, #FFB800 0%, #D49900 100%); color: #111111; }
+
         .cta-btn::after {
             content: '›';
             font-size: 1.2rem;
@@ -251,19 +280,10 @@
             font-weight: 400;
         }
 
-        @keyframes pulse-btn {
-            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(234,29,44,0.3), inset 0 2px 5px rgba(255,255,255,0.5); }
-            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); }
-        }
-
-        .btn-99food { animation-name: pulse-btn-yellow; }
-        .btn-keeta { animation-name: pulse-btn-yellow; }
-
-        @keyframes pulse-btn-yellow {
-            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6); }
-            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(246,179,46,0.4), inset 0 2px 5px rgba(255,255,255,0.8); }
-            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6); }
+        @keyframes pulse-btn-green {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,200,83,0.4), inset 0 2px 5px rgba(255,255,255,0.6); }
+            50% { transform: scale(1.06); box-shadow: 0 6px 20px rgba(0,200,83,0.6), inset 0 2px 5px rgba(255,255,255,0.8); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,200,83,0.4), inset 0 2px 5px rgba(255,255,255,0.6); }
         }
 
         @keyframes fadeInDown {
@@ -341,7 +361,7 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            background-color: #151515;
+            background-color: #1A0D0D;
         }
 
         .map-container iframe {
@@ -372,8 +392,16 @@
 
         <!-- LINKS DAS PLATAFORMAS -->
         <section class="links-section">
-            <h3 class="section-title">Faça seu Pedido</h3>
             
+            <!-- CARDÁPIO PRÓPRIO (DESTAQUE ABSOLUTO) -->
+            <a href="https://app.cardapioweb.com/amadanonnapizzaria" target="_blank" class="platform-card highlight-card card-proprio" onclick="trackClick('clique_cardapio_proprio')">
+                <div class="ribbon">Sem Taxas</div>
+                <div class="platform-logo-box">
+                    <h2 class="platform-name-fallback text-proprio">Cardápio Oficial</h2>
+                </div>
+                <div class="cta-btn btn-proprio">Fazer Pedido</div>
+            </a>
+
             <!-- IFOOD -->
             <a href="https://www.ifood.com.br/" target="_blank" class="platform-card card-ifood" onclick="trackClick('clique_ifood')">
                 <div class="platform-logo-box">
