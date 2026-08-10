@@ -246,7 +246,7 @@
         }
 
         /* =========================================
-           ISCAS / COMBOS (NOVA SECÇÃO)
+           ISCAS / COMBOS (SECÇÃO ÚNICA DE ALTA CONVERSÃO)
            ========================================= */
         .combos-section {
             width: 100%;
@@ -266,7 +266,7 @@
             border: 1px solid rgba(0,0,0,0.06);
             overflow: hidden;
             text-decoration: none;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -301,19 +301,16 @@
             letter-spacing: 0.5px;
         }
 
-        .combo-tag.blue { background-color: #DBEAFE; color: #2563EB; }
-        .combo-tag.red { background-color: #FEE2E2; color: #DC2626; }
-
         .combo-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #1F2937;
-            font-weight: 800;
+            font-weight: 900;
             line-height: 1.25;
             letter-spacing: -0.3px;
         }
 
         .combo-desc {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #6B7280;
             font-weight: 500;
             line-height: 1.4;
@@ -328,7 +325,7 @@
 
         .combo-current {
             color: #10B981;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 900;
             letter-spacing: -0.5px;
         }
@@ -347,6 +344,23 @@
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 800;
+        }
+        
+        .combo-action-btn {
+            margin-top: 10px;
+            background-color: var(--cta-proprio);
+            color: #000;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
         }
 
         /* =========================================
@@ -484,12 +498,12 @@
             </a>
         </section>
 
-        <!-- NOVA SECÇÃO: ISCAS / COMBOS -->
+        <!-- SECÇÃO: ISCA PRINCIPAL -->
         <section class="combos-section">
-            <h3 class="section-title">🔥 Ofertas Exclusivas</h3>
+            <h3 class="section-title">🔥 Oferta Exclusiva</h3>
 
-            <!-- COMBO 1 (Conforme imagem enviada) -->
-            <a href="https://app.cardapioweb.com/amadanonnapizzaria" target="_blank" class="combo-card" onclick="trackClick('clique_combo_calabresa')">
+            <!-- COMBO PRINCIPAL COM LINK DIRETO PARA O PRODUTO -->
+            <a href="https://app.cardapioweb.com/amadanonnapizzaria?id=4744892#produto" target="_blank" class="combo-card" onclick="trackClick('clique_combo_calabresa')">
                 <img src="https://i.ibb.co/Z1NsrKTx/70e4ce3b-94e7-42e4-b66e-cdcfab059cf5.png" alt="Combo Calabresa" class="combo-img">
                 <div class="combo-content">
                     <span class="combo-tag">Mais Pedido</span>
@@ -500,41 +514,12 @@
                         <span class="combo-old">R$ 79,90</span>
                         <span class="combo-discount">-25%</span>
                     </div>
-                </div>
-            </a>
-
-            <!-- COMBO 2 -->
-            <a href="https://app.cardapioweb.com/amadanonnapizzaria" target="_blank" class="combo-card" onclick="trackClick('clique_combo_frango')">
-                <!-- Imagem ilustrativa que você já tinha mandado -->
-                <img src="https://i.ibb.co/9mR8nmH8/Design-sem-nome-1.png" alt="Combo Frango com Catupiry" class="combo-img">
-                <div class="combo-content">
-                    <span class="combo-tag blue">Especial</span>
-                    <h3 class="combo-title">Pizza Grande Frango c/ Catupiry + Guaraná 1L</h3>
-                    <p class="combo-desc">Tradicional Frango desfiado temperado coberto com o verdadeiro Catupiry + Guaraná 1L</p>
-                    <div class="combo-price-row">
-                        <span class="combo-current">R$ 64,90</span>
-                        <span class="combo-old">R$ 84,90</span>
-                        <span class="combo-discount">-23%</span>
+                    <!-- CTA Explicito de Compra -->
+                    <div class="combo-action-btn">
+                        Pedir Agora ➔
                     </div>
                 </div>
             </a>
-
-            <!-- COMBO 3 -->
-            <a href="https://app.cardapioweb.com/amadanonnapizzaria" target="_blank" class="combo-card" onclick="trackClick('clique_combo_atum')">
-                <!-- Imagem ilustrativa -->
-                <img src="https://i.ibb.co/PZTXzSkR/Atum-1.png" alt="Combo Atum" class="combo-img">
-                <div class="combo-content">
-                    <span class="combo-tag red">Promoção</span>
-                    <h3 class="combo-title">Pizza Grande Atum Sólido + Guaraná 1L</h3>
-                    <p class="combo-desc">Delicioso Atum sólido com rodelas de cebola fresca + Guaraná 1L Gelado para acompanhar.</p>
-                    <div class="combo-price-row">
-                        <span class="combo-current">R$ 69,90</span>
-                        <span class="combo-old">R$ 89,90</span>
-                        <span class="combo-discount">-22%</span>
-                    </div>
-                </div>
-            </a>
-
         </section>
 
         <!-- CARROSSEL DE PIZZAS -->
