@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Amada Nonna Pizzaria | Peça Agora</title>
+    <title>Pizzaria Amada Nonna | Peça Agora</title>
     
     <!-- Favicon -->
     <link rel="icon" href="https://i.ibb.co/ns0z2hCH/Logo-da-Pizzaria.jpg">
@@ -36,15 +36,18 @@
 
     <style>
         /* =========================================
-           VARIÁVEIS DE CORES & PALETA
+           VARIÁVEIS DE CORES & PALETA EXTRAÍDA
            ========================================= */
         :root {
-            /* Fundo escuro premium liso para destacar os banners */
-            --bg-dark: #121212; 
-            --text-light: #FFFFFF;
+            /* Fundo exato extraído da logo (Bege claro acinzentado/rosado) */
+            --bg-color: #E3D3CE; 
             
-            /* Borda da Logo (Vermelho Pizzaria) */
-            --logo-border: #EA1D2C;
+            /* Textos escuros para alto contraste no fundo claro */
+            --text-main: #2A110D;
+            --text-muted: #5E3A35;
+            
+            /* Borda da Logo (Vermelho Pintado da Logo) */
+            --logo-border: #BA2C25;
             
             /* Cores dos CTAs das Plataformas */
             --cta-proprio: #00C853; 
@@ -65,8 +68,8 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -95,14 +98,14 @@
         }
 
         .logo-wrapper {
-            width: 140px;
-            height: 140px;
+            width: 145px;
+            height: 145px;
             border-radius: 50%;
             border: 4px solid var(--logo-border);
-            box-shadow: 0 8px 25px rgba(234, 29, 44, 0.2);
+            box-shadow: 0 8px 25px rgba(186, 44, 37, 0.25);
             overflow: hidden;
             margin: 0 auto 15px auto;
-            background-color: #fff;
+            background-color: var(--bg-color); /* Fundo igual ao da página para mesclar perfeitamente */
         }
 
         .logo-wrapper img {
@@ -112,27 +115,28 @@
         }
 
         .header h1 {
-            font-size: 1.7rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
             margin-bottom: 5px;
+            color: var(--text-main);
         }
 
         .header p {
-            font-size: 1.05rem;
-            color: #E0D4D4; 
-            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--logo-border); 
+            font-weight: 700;
             font-style: italic;
         }
 
         .section-title {
             font-size: 0.9rem;
-            color: #888;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 800;
             text-align: center;
         }
 
@@ -144,33 +148,35 @@
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 22px;
             margin-bottom: 45px;
         }
 
         /* Estrutura do Card: Imagem em cima, Botão embaixo */
         .banner-card {
+            position: relative;
             display: flex;
             flex-direction: column;
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
             text-decoration: none;
-            background-color: #000;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+            background-color: #FFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .banner-card:active {
             transform: scale(0.97);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         /* Container da Imagem do Banner */
         .banner-img-box {
             width: 100%;
             display: block;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background-color: #000; /* Fundo preto para garantir leitura dos banners dark */
         }
 
         .banner-img-box img {
@@ -180,13 +186,45 @@
             object-fit: cover;
         }
 
+        /* Etiqueta de Vantagem / Gatilho de Clique no Primeiro Card */
+        .promo-badge {
+            position: absolute;
+            top: 12px;
+            left: -8px;
+            background-color: var(--cta-proprio);
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px 8px 8px 4px;
+            z-index: 3;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            animation: bounce-badge 2s infinite;
+        }
+
+        .promo-badge::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            border-top: 6px solid #008736;
+            border-left: 8px solid transparent;
+        }
+
+        @keyframes bounce-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
         /* Barra Inferior (CTA) */
         .banner-cta {
             width: 100%;
-            padding: 14px 0;
+            padding: 16px 0;
             text-align: center;
-            font-size: 1.1rem;
-            font-weight: 800;
+            font-size: 1.15rem;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
@@ -203,7 +241,7 @@
         }
 
         /* Cores Específicas dos CTAs */
-        .cta-proprio { background-color: var(--cta-proprio); color: #000; }
+        .cta-proprio { background-color: var(--cta-proprio); color: #000; font-size: 1.2rem;}
         .cta-ifood { background-color: var(--cta-ifood); color: #FFF; }
         .cta-99food { background-color: var(--cta-99food); color: #000; }
         .cta-keeta { background-color: var(--cta-keeta); color: #000; }
@@ -226,6 +264,7 @@
             width: 100vw;
             overflow: hidden;
             position: relative;
+            /* Máscara adaptada para fundo claro */
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
@@ -247,8 +286,8 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            border: 2px solid #FFF;
         }
 
         .carousel-item img {
@@ -273,7 +312,7 @@
         .map-section {
             width: 100%;
             padding: 0 20px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .map-container {
@@ -281,16 +320,16 @@
             height: 180px;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            background-color: #121212;
+            border: 3px solid #FFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            background-color: #E3D3CE;
         }
 
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%);
+            /* Removido o filtro dark-mode pois a página agora é clara */
         }
 
     </style>
@@ -306,21 +345,22 @@
         <!-- CABEÇALHO -->
         <header class="header">
             <div class="logo-wrapper">
-                <img src="https://i.ibb.co/ns0z2hCH/Logo-da-Pizzaria.jpg" alt="Amada Nonna Pizzaria Logo">
+                <img src="https://i.ibb.co/ns0z2hCH/Logo-da-Pizzaria.jpg" alt="Pizzaria Amada Nonna Logo">
             </div>
-            <h1>Amada Nonna</h1>
-            <p>A Melhor Pizza da Região!! 🍕</p>
+            <h1>Pizzaria Amada Nonna</h1>
+            <p>A Melhor Pizza de Pirituba!! 🍕</p>
         </header>
 
         <!-- LINKS DAS PLATAFORMAS (ESTILO BISTRÔ) -->
         <section class="links-section">
             
-            <!-- CARDÁPIO PRÓPRIO -->
+            <!-- CARDÁPIO PRÓPRIO COM INCENTIVO -->
             <a href="https://app.cardapioweb.com/amadanonnapizzaria" target="_blank" class="banner-card" onclick="trackClick('clique_cardapio_proprio')">
+                <div class="promo-badge">🔥 SEM TAXAS + BARATO</div>
                 <div class="banner-img-box">
                     <img src="https://i.ibb.co/mrT9rq9v/ad834d99-7991-44d0-b5ed-e6ffed97b025.png" alt="Cardápio Oficial">
                 </div>
-                <div class="banner-cta cta-proprio">Fazer Pedido</div>
+                <div class="banner-cta cta-proprio">Pedir Mais Barato Aqui</div>
             </a>
 
             <!-- IFOOD -->
