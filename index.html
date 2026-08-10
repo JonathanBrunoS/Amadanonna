@@ -8,6 +8,11 @@
     <!-- Favicon -->
     <link rel="icon" href="https://i.ibb.co/ns0z2hCH/Logo-da-Pizzaria.jpg">
 
+    <!-- Google Fonts: Montserrat para Alta Conversão -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -64,7 +69,8 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* Aplicando a nova fonte Montserrat em todo o projeto */
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
@@ -105,7 +111,7 @@
             box-shadow: 0 8px 25px rgba(186, 44, 37, 0.25);
             overflow: hidden;
             margin: 0 auto 15px auto;
-            background-color: var(--bg-color); /* Fundo igual ao da página para mesclar perfeitamente */
+            background-color: var(--bg-color);
         }
 
         .logo-wrapper img {
@@ -118,7 +124,7 @@
             font-size: 1.8rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
             margin-bottom: 5px;
             color: var(--text-main);
         }
@@ -131,10 +137,10 @@
         }
 
         .section-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             margin-bottom: 15px;
             font-weight: 800;
             text-align: center;
@@ -152,7 +158,6 @@
             margin-bottom: 45px;
         }
 
-        /* Estrutura do Card: Imagem em cima, Botão embaixo */
         .banner-card {
             position: relative;
             display: flex;
@@ -171,12 +176,11 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* Container da Imagem do Banner */
         .banner-img-box {
             width: 100%;
             display: block;
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            background-color: #000; /* Fundo preto para garantir leitura dos banners dark */
+            background-color: #000;
         }
 
         .banner-img-box img {
@@ -186,14 +190,14 @@
             object-fit: cover;
         }
 
-        /* Etiqueta de Vantagem / Gatilho de Clique no Primeiro Card */
+        /* Etiqueta de Vantagem / Gatilho de Clique */
         .promo-badge {
             position: absolute;
             top: 12px;
             left: -8px;
             background-color: var(--cta-proprio);
             color: #000;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 900;
             text-transform: uppercase;
             padding: 6px 14px;
@@ -223,7 +227,7 @@
             width: 100%;
             padding: 16px 0;
             text-align: center;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -233,15 +237,13 @@
             gap: 8px;
         }
 
-        /* Seta Dinâmica */
         .banner-cta::after {
             content: '➔';
             font-size: 1.2rem;
             margin-top: 1px;
         }
 
-        /* Cores Específicas dos CTAs */
-        .cta-proprio { background-color: var(--cta-proprio); color: #000; font-size: 1.2rem;}
+        .cta-proprio { background-color: var(--cta-proprio); color: #000; font-size: 1.15rem;}
         .cta-ifood { background-color: var(--cta-ifood); color: #FFF; }
         .cta-99food { background-color: var(--cta-99food); color: #000; }
         .cta-keeta { background-color: var(--cta-keeta); color: #000; }
@@ -264,7 +266,6 @@
             width: 100vw;
             overflow: hidden;
             position: relative;
-            /* Máscara adaptada para fundo claro */
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
@@ -329,7 +330,6 @@
             width: 100%;
             height: 100%;
             border: 0;
-            /* Removido o filtro dark-mode pois a página agora é clara */
         }
 
     </style>
