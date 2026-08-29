@@ -31,25 +31,28 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '[INSERIR ID META PIXEL]');
+    fbq('init', '1016989054384719');
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=[INSERIR ID META PIXEL]&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1016989054384719&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
 
     <style>
         /* =========================================
-           VARIÁVEIS DE CORES & PALETA EXTRAÍDA
+           VARIÁVEIS DE CORES & PALETA
            ========================================= */
         :root {
-            --bg-color: #E3D3CE; 
+            /* Gradiente de fundo premium com base na logo */
+            --bg-color-start: #F9F1EF; 
+            --bg-color-end: #E3D3CE;
+            
             --text-main: #2A110D;
             --text-muted: #5E3A35;
             --logo-border: #BA2C25;
             
-            /* Cores dos CTAs das Plataformas */
+            /* CTAs */
             --cta-proprio: #00C853; 
             --cta-ifood: #EA1D2C;
             --cta-99food: #F6B32E;
@@ -68,7 +71,7 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--bg-color-start) 0%, var(--bg-color-end) 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -91,8 +94,8 @@
            ========================================= */
         .header {
             text-align: center;
-            margin-top: 40px;
-            margin-bottom: 25px;
+            margin-top: 45px;
+            margin-bottom: 30px;
             padding: 0 20px;
             animation: fadeInDown 0.8s ease;
         }
@@ -102,10 +105,10 @@
             height: 145px;
             border-radius: 50%;
             border: 4px solid var(--logo-border);
-            box-shadow: 0 8px 25px rgba(186, 44, 37, 0.25);
+            box-shadow: 0 10px 30px rgba(186, 44, 37, 0.15);
             overflow: hidden;
             margin: 0 auto 15px auto;
-            background-color: var(--bg-color);
+            background-color: #FFF;
         }
 
         .logo-wrapper img {
@@ -134,22 +137,22 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 15px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
             font-weight: 800;
             text-align: center;
         }
 
         /* =========================================
-           CARDS DE PLATAFORMAS (ESTILO BISTRÔ)
+           CARDS DE PLATAFORMAS (DESIGN WIDGET iOs)
            ========================================= */
         .links-section {
             width: 100%;
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            margin-bottom: 35px;
+            gap: 22px;
+            margin-bottom: 40px;
         }
 
         .banner-card {
@@ -157,24 +160,29 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 28px; /* Muito mais orgânico e macio */
+            padding: 10px; /* Aspecto de moldura/widget */
             text-decoration: none;
-            background-color: #FFF;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            background: rgba(255, 255, 255, 0.55); /* Glassmorphism */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .banner-card:active {
             transform: scale(0.97);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         }
 
+        /* Imagem isolada dentro da moldura */
         .banner-img-box {
             width: 100%;
-            display: block;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            overflow: hidden;
             background-color: #000;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
         }
 
         .banner-img-box img {
@@ -186,8 +194,8 @@
 
         .promo-badge {
             position: absolute;
-            top: 12px;
-            left: -8px;
+            top: 18px;
+            left: -4px;
             background-color: var(--cta-proprio);
             color: #000;
             font-size: 0.75rem;
@@ -197,8 +205,8 @@
             border-radius: 4px 8px 8px 4px;
             z-index: 3;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            animation: bounce-badge 2s infinite;
+            box-shadow: 0 4px 15px rgba(0,200,83,0.4);
+            animation: bounce-badge 2.5s infinite;
         }
 
         .promo-badge::after {
@@ -215,27 +223,32 @@
             50% { transform: translateY(-4px); }
         }
 
+        /* Novo estilo de CTA (Botão pílula flutuante interno) */
         .banner-cta {
             width: 100%;
-            padding: 16px 0;
+            margin-top: 10px;
+            padding: 15px 0;
+            border-radius: 20px;
             text-align: center;
             font-size: 1.1rem;
-            font-weight: 900;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .banner-cta::after {
             content: '➔';
             font-size: 1.2rem;
             margin-top: 1px;
+            opacity: 0.8;
         }
 
-        .cta-proprio { background-color: var(--cta-proprio); color: #000; font-size: 1.15rem;}
+        .cta-proprio { background-color: var(--cta-proprio); color: #000; font-size: 1.15rem; box-shadow: 0 6px 18px rgba(0,200,83,0.3);}
         .cta-ifood { background-color: var(--cta-ifood); color: #FFF; }
         .cta-99food { background-color: var(--cta-99food); color: #000; }
         .cta-keeta { background-color: var(--cta-keeta); color: #000; }
@@ -246,7 +259,7 @@
         }
 
         /* =========================================
-           ISCAS / COMBOS (SECÇÃO ÚNICA DE ALTA CONVERSÃO)
+           ISCA / COMBO (DESIGN WIDGET iOs)
            ========================================= */
         .combos-section {
             width: 100%;
@@ -261,29 +274,33 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            background-color: #FFFFFF;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 28px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             overflow: hidden;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .combo-card:active {
             transform: scale(0.97);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         }
 
         .combo-img {
             width: 100%;
-            height: 190px;
+            height: 200px;
             object-fit: cover;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
         }
 
         .combo-content {
-            padding: 16px;
+            padding: 16px 12px 8px 12px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -293,8 +310,8 @@
             align-self: flex-start;
             background-color: #FEF3C7;
             color: #D97706;
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 6px 12px;
+            border-radius: 10px;
             font-size: 0.75rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -302,11 +319,11 @@
         }
 
         .combo-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #1F2937;
             font-weight: 900;
-            line-height: 1.25;
-            letter-spacing: -0.3px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
         }
 
         .combo-desc {
@@ -319,20 +336,21 @@
         .combo-price-row {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             margin-top: 6px;
+            margin-bottom: 10px;
         }
 
         .combo-current {
             color: #10B981;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 900;
             letter-spacing: -0.5px;
         }
 
         .combo-old {
             color: #9CA3AF;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-decoration: line-through;
             font-weight: 600;
         }
@@ -340,27 +358,27 @@
         .combo-discount {
             background-color: #D1FAE5;
             color: #059669;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 800;
         }
         
         .combo-action-btn {
-            margin-top: 10px;
             background-color: var(--cta-proprio);
             color: #000;
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 20px;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 1.05rem;
             letter-spacing: 0.5px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 6px;
+            box-shadow: 0 6px 18px rgba(0,200,83,0.3);
         }
 
         /* =========================================
@@ -394,11 +412,11 @@
             width: 220px;
             height: 160px;
             margin: 0 7.5px;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-            border: 2px solid #FFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 3px solid #FFF;
         }
 
         .carousel-item img {
@@ -429,10 +447,10 @@
         .map-container {
             width: 100%;
             height: 180px;
-            border-radius: 12px;
+            border-radius: 24px;
             overflow: hidden;
-            border: 3px solid #FFF;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border: 4px solid #FFF;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
             background-color: #E3D3CE;
         }
 
@@ -473,20 +491,20 @@
                 <div class="banner-cta cta-proprio">Pedir Mais Barato Aqui</div>
             </a>
 
-            <!-- IFOOD -->
-            <a href="https://www.ifood.com.br/" target="_blank" class="banner-card" onclick="trackClick('clique_ifood')">
+            <!-- IFOOD (Link Atualizado) -->
+            <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/amada-nonna-pizzaria-vila-genioli/67d74b78-df28-4c28-965a-4a11bd62371f?utm_medium=share" target="_blank" class="banner-card" onclick="trackClick('clique_ifood')">
                 <div class="banner-img-box">
                     <img src="https://i.ibb.co/5WtryTnk/image.png" alt="iFood">
                 </div>
-                <div class="banner-cta cta-ifood">Fazer Pedido</div>
+                <div class="banner-cta cta-ifood">Fazer Pedido no iFood</div>
             </a>
 
-            <!-- 99FOOD -->
-            <a href="https://99app.com/99food/" target="_blank" class="banner-card" onclick="trackClick('clique_99food')">
+            <!-- 99FOOD (Link Atualizado) -->
+            <a href="https://oia.99app.com/dlp9/r1Zg6A?area=BR" target="_blank" class="banner-card" onclick="trackClick('clique_99food')">
                 <div class="banner-img-box">
                     <img src="https://i.ibb.co/yF1yGhcy/81d44174-b247-4e0e-bc1f-9fd857b50c1e.png" alt="99Food">
                 </div>
-                <div class="banner-cta cta-99food">Fazer Pedido</div>
+                <div class="banner-cta cta-99food">Fazer Pedido no 99Food</div>
             </a>
 
             <!-- KEETA -->
@@ -494,7 +512,7 @@
                 <div class="banner-img-box">
                     <img src="https://i.ibb.co/xSdVSLTr/642503bd-2a24-487f-a493-b88a291a75d2.png" alt="Keeta">
                 </div>
-                <div class="banner-cta cta-keeta">Fazer Pedido</div>
+                <div class="banner-cta cta-keeta">Fazer Pedido no Keeta</div>
             </a>
         </section>
 
